@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import '../../core/theme/theme_barrel.dart';
 
+enum DashLineOrientation { DashHorz, DashVert }
+
 class DashLine extends StatelessWidget with AbstractStyle {
   final double height;
   final Color color;
+  final DashLineOrientation orientation;
 
-  const DashLine({@required this.color, this.height = 1});
+  const DashLine({@required this.color, this.orientation: DashLineOrientation.DashHorz, this.height = 1});
 
   @override
   Widget build(BuildContext context) {
@@ -17,18 +20,27 @@ class DashLine extends StatelessWidget with AbstractStyle {
         final dashCount = (boxWidth / (2 * dashWidth)).floor();
         return Flex(
           children: List.generate(dashCount, (_) {
-            return SizedBox(
-              width: dashWidth,
-              height: dashHeight,
-              child: DecoratedBox(
-                decoration: BoxDecoration(color: color),
+            return Container(
+              padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+              child: RotatedBox(
+                quarterTurns: _isHorz() ? 0 : 1,
+                child: SizedBox(
+                  width: dashWidth,
+                  height: dashHeight,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(color: color),
+                  ),
+                ),
               ),
             );
           }),
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          direction: Axis.horizontal,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          direction: _isHorz() ? Axis.horizontal : Axis.vertical,
         );
       },
     );
   }
+
+  bool _isHorz() => orientation == DashLineOrientation.DashHorz;
 }

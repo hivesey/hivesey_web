@@ -54,7 +54,7 @@ class HomeScreen extends StatelessWidget with AbstractStyle {
         ),
       );
 
-  Widget _hi() => XCardHorz(
+  Widget _hi() => XCard(breakpoint: 700).get(
         primaryIconImagePath: 'images/rt-vin.png',
         title: 'hi',
         details:
@@ -62,7 +62,7 @@ class HomeScreen extends StatelessWidget with AbstractStyle {
         iconPosition: PrimaryIconPosition.Start,
       );
 
-  Widget _hi1() => XCardHorz(
+  Widget _hi1() => XCard(breakpoint: 700).get(
         primaryIconImagePath: 'images/rt-vin.png',
         title: 'hi',
         details:
