@@ -4,10 +4,10 @@ import 'package:flutter/services.dart';
 
 import '../theme/media_info.dart';
 
-final String fontFamily = 'Roboto';
-final String fontFamilyThin = 'RobotoThin';
-final String fontFamilyLight = 'RobotoLight';
-final String fontFamilyMedium = 'RobotoMedium';
+final String fontFamily = 'Lato';
+final String fontFamilyThin = 'LatoThin';
+final String fontFamilyLight = 'LatoLight';
+final String fontFamilyMedium = 'Lato';
 
 ////Contemporary with green primary Theme ***************************************************************************************************
 class Contemporary extends AbstractAppTheme {
@@ -15,20 +15,20 @@ class Contemporary extends AbstractAppTheme {
   ThemeColors _createThemeColors() => super.themeColors ??= ThemeColors(
         primarySwatch: 0xFFFFFFFF,
         backgroundColor: Colors.white,
-        backgroundColorLightOrDark: Color.fromRGBO(240, 247, 255, 1), //light blue #f0f7ff
-        textColor: Colors.grey[900], //close to black
+        backgroundColorLightOrDark: Colors.grey[100],
+        textColor: Colors.grey[700], //close to black
         textColorLightOrDark: Color.fromRGBO(52, 90, 127, 1), //dark blue #34597f
-        primaryColor: Color.fromRGBO(105, 178, 255, 1), //blue 69B2FF
-        primaryColorLightOrDark: Color.fromRGBO(94, 160, 229, 1), //next darket shade of primary color #5ea0e5
+        primaryColor: Color.fromRGBO(90, 142, 191, 1), //blue 5A8FBF
+        primaryColorLightOrDark: Color.fromRGBO(105, 178, 255, 1), //lighter blue #69B2FF
         primaryTextColor: Colors.white,
-        secondaryColor: Color.fromRGBO(105, 178, 255, 1), //blue 69B2FF .. same as primary
-        secondaryColorLightOrDark: Color.fromRGBO(94, 160, 229, 1), //next darket shade of primary color #5ea0e5 .. same as primary
-        secondaryTextColor: Color.fromRGBO(94, 160, 229, 1), //next darket shade of primary color #5ea0e5 ... same as primary
+        secondaryColor: Colors.grey[600],
+        secondaryColorLightOrDark: Colors.grey[800], //darker
+        secondaryTextColor: Colors.grey[100],
         warnColor: Color.fromRGBO(138, 72, 63, 1), //red
         warnColorLightOrDark: Color.fromRGBO(88, 46, 41, 1), //red darker
         warnTextColor: Colors.white,
-        lineColor: Color.fromRGBO(225, 239, 255, 1), //light blue #e1efff ... same as backgroundColorLightOrDark
-        lineColorLightOrDark: Color.fromRGBO(225, 239, 255, 1), //light blue #e1efff ... same as backgroundColorLightOrDark or lineColor
+        lineColor: Colors.grey[200],
+        lineColorLightOrDark: Colors.grey[300], //lighter
         navigationStatusBarBrightness: Brightness.dark, // NA for web apps
         navigationStatusBarColor: Colors.white, // NA for web apps
       );
@@ -196,8 +196,8 @@ abstract class AbstractAppTheme {
       headline5: TextStyle(fontSize: 24 * scaleFactor, fontFamily: fontFamily, letterSpacing: 0.0, color: themeColors.textColor),
       headline6: TextStyle(fontSize: 18 * scaleFactor, fontFamily: fontFamily, letterSpacing: 0.0, color: themeColors.textColor),
       subtitle1: TextStyle(fontSize: 16 * scaleFactor, fontFamily: fontFamily, letterSpacing: 0.0, color: themeColors.textColor),
-      subtitle2: TextStyle(fontSize: 14 * scaleFactor, fontFamily: fontFamily, letterSpacing: 0.0, color: themeColors.textColor),
-      bodyText1: TextStyle(fontSize: 14 * scaleFactor, fontFamily: fontFamily, letterSpacing: 0.0, color: themeColors.textColor),
+      subtitle2: TextStyle(fontSize: 14 * scaleFactor, fontFamily: fontFamily, letterSpacing: 0.8, color: themeColors.textColor),
+      bodyText1: TextStyle(fontSize: 14 * scaleFactor, fontFamily: fontFamily, letterSpacing: 0.5, color: themeColors.textColor),
       bodyText2: TextStyle(fontSize: 14 * scaleFactor, fontFamily: fontFamily, letterSpacing: 0.0, color: themeColors.textColor),
       caption: TextStyle(fontSize: 12 * scaleFactor, fontFamily: fontFamily, letterSpacing: 0.0, color: themeColors.textColor),
       button: TextStyle(fontSize: 14 * scaleFactor, fontFamily: fontFamily, letterSpacing: 0.0, color: themeColors.textColor),
