@@ -42,7 +42,7 @@ class HomeScreen extends StatelessWidget with AbstractStyle {
               Padding(padding: EdgeInsets.fromLTRB(0, 25, 0, 25)),
               Container(
                 constraints: BoxConstraints(maxWidth: AppConstants.maxWidth),
-                child: _hi(),
+                child: _hi1(),
               ),
               Padding(padding: EdgeInsets.fromLTRB(0, 25, 0, 25)),
               Container(
@@ -60,6 +60,14 @@ class HomeScreen extends StatelessWidget with AbstractStyle {
         details:
             'We are web developers. Our first piece of code was  “linked list in C” about 25 years ago. As the saying goes “life happens as you are busy making other plans”. During this time we enjoyed designing and developing many web applications, apps for startups and fortune 500 companies. We want to use everything we have to get really creative in our hive',
         iconPosition: PrimaryIconPosition.Start,
+      );
+
+  Widget _hi1() => XCardHorz(
+        primaryIconImagePath: 'images/rt-vin.png',
+        title: 'hi',
+        details:
+            'We are web developers. Our first piece of code was  “linked list in C” about 25 years ago. As the saying goes “life happens as you are busy making other plans”. During this time we enjoyed designing and developing many web applications, apps for startups and fortune 500 companies. We want to use everything we have to get really creative in our hive',
+        iconPosition: PrimaryIconPosition.End,
       );
 
   /// title, caption and image with mountains

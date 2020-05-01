@@ -23,19 +23,7 @@ class XCardHorz extends AbstractXCard {
             _primaryAvatar(),
             Expanded(flex: 1, child: DashLine(color: super.getColors().primaryColor)),
             _imageToTextSeperator(),
-            Expanded(
-              flex: 9,
-              child: Container(
-                padding: EdgeInsets.fromLTRB(30, 30, 30, 30),
-                child: Column(
-                  children: [
-                    _titleText(),
-                    Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 20)),
-                    _detailsText(),
-                  ],
-                ),
-              ),
-            )
+            _titleAndDetails(),
           ],
         ),
       );
@@ -44,23 +32,25 @@ class XCardHorz extends AbstractXCard {
         padding: EdgeInsets.fromLTRB(25, 0, 25, 0),
         child: Row(
           children: <Widget>[
-            _primaryAvatar(),
-            Expanded(flex: 1, child: DashLine(color: super.getColors().primaryColor)),
+            _titleAndDetails(),
             _imageToTextSeperator(),
-            Expanded(
-              flex: 9,
-              child: Container(
-                padding: EdgeInsets.fromLTRB(30, 30, 30, 30),
-                child: Column(
-                  children: [
-                    _titleText(),
-                    Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 20)),
-                    _detailsText(),
-                  ],
-                ),
-              ),
-            )
+            Expanded(flex: 1, child: DashLine(color: super.getColors().primaryColor)),
+            _primaryAvatar(),
           ],
+        ),
+      );
+
+  Widget _titleAndDetails() => Expanded(
+        flex: 9,
+        child: Container(
+          padding: EdgeInsets.fromLTRB(30, 30, 30, 30),
+          child: Column(
+            children: [
+              _title(TextAlign.left),
+              Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 20)),
+              _details(),
+            ],
+          ),
         ),
       );
 }
@@ -88,15 +78,19 @@ abstract class AbstractXCard extends StatelessWidget with AbstractStyle {
         decoration: BoxDecoration(border: Border(left: BorderSide(color: super.getColors().lineColorLightOrDark))),
       );
 
-  Widget _titleText() => Text(
-        this.title,
-        style: TextStyle(
-          fontSize: super.getTextTheme().headline3.fontSize,
-          color: super.getColors().primaryColorLightOrDark,
+  Widget _title(TextAlign textAlign) => Container(
+        width: double.maxFinite,
+        child: Text(
+          this.title,
+          style: TextStyle(
+            fontSize: super.getTextTheme().headline3.fontSize,
+            color: super.getColors().primaryColorLightOrDark,
+          ),
+          textAlign: textAlign,
         ),
       );
 
-  Widget _detailsText() => Text(
+  Widget _details() => Text(
         this.details,
         textAlign: TextAlign.justify,
         style: TextStyle(
