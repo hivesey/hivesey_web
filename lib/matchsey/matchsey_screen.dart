@@ -96,7 +96,8 @@ class MatchseyScreen extends StatelessWidget with AbstractStyle {
   Widget _collaboration() => XCard(breakpoint: 700).get(
         primaryIconImagePath: 'images/family.png',
         title: 'collaboration',
-        details: 'We really enjoyed developing this game with our kids. Lots of collaboration from ideas, design to quality checks.',
+        details:
+            'We really enjoyed developing this game with our kids. Lots of collaboration from ideas, designs and lots of quality checks. They loved looking at number of downloads and user comments. Truly amazing :-)',
         iconPosition: PrimaryIconPosition.Start,
         titleColor: Color.fromRGBO(195, 113, 102, 1),
       );
