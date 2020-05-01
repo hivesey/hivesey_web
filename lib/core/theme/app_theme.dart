@@ -21,8 +21,8 @@ class Contemporary extends AbstractAppTheme {
         primaryColor: Color.fromRGBO(90, 142, 191, 1), //blue 5A8FBF
         primaryColorLightOrDark: Color.fromRGBO(105, 178, 255, 1), //lighter blue #69B2FF
         primaryTextColor: Colors.white,
-        secondaryColor: Colors.grey[600],
-        secondaryColorLightOrDark: Colors.grey[800], //darker
+        secondaryColor: Colors.grey[200],
+        secondaryColorLightOrDark: Colors.grey[300], //darker
         secondaryTextColor: Colors.grey[100],
         warnColor: Color.fromRGBO(138, 72, 63, 1), //red
         warnColorLightOrDark: Color.fromRGBO(88, 46, 41, 1), //red darker

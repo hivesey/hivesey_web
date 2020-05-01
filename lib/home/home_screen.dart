@@ -42,32 +42,20 @@ class HomeScreen extends StatelessWidget with AbstractStyle {
               Padding(padding: EdgeInsets.fromLTRB(0, 25, 0, 25)),
               Container(
                 constraints: BoxConstraints(maxWidth: AppConstants.maxWidth),
-                child: _hi1(),
+                child: _iAmArathi(),
               ),
               Padding(padding: EdgeInsets.fromLTRB(0, 25, 0, 25)),
               Container(
                 constraints: BoxConstraints(maxWidth: AppConstants.maxWidth),
-                child: _hi(),
+                child: _vinayHere(),
+              ),
+              Padding(padding: EdgeInsets.fromLTRB(0, 25, 0, 25)),
+              Container(
+                child: footer(),
               ),
             ])
           ],
         ),
-      );
-
-  Widget _hi() => XCard(breakpoint: 700).get(
-        primaryIconImagePath: 'images/rt-vin.png',
-        title: 'hi',
-        details:
-            'We are web developers. Our first piece of code was  “linked list in C” about 25 years ago. As the saying goes “life happens as you are busy making other plans”. During this time we enjoyed designing and developing many web applications, apps for startups and fortune 500 companies. We want to use everything we have to get really creative in our hive',
-        iconPosition: PrimaryIconPosition.Start,
-      );
-
-  Widget _hi1() => XCard(breakpoint: 700).get(
-        primaryIconImagePath: 'images/rt-vin.png',
-        title: 'hi',
-        details:
-            'We are web developers. Our first piece of code was  “linked list in C” about 25 years ago. As the saying goes “life happens as you are busy making other plans”. During this time we enjoyed designing and developing many web applications, apps for startups and fortune 500 companies. We want to use everything we have to get really creative in our hive',
-        iconPosition: PrimaryIconPosition.End,
       );
 
   /// title, caption and image with mountains
@@ -113,4 +101,40 @@ class HomeScreen extends StatelessWidget with AbstractStyle {
           ),
         )
       ];
+
+  Widget _hi() => XCard(breakpoint: 700).get(
+        primaryIconImagePath: 'images/rt-vin.png',
+        title: 'hi',
+        details:
+            'We are web developers. Our first piece of code was  “linked list in C” about 25 years ago. As the saying goes “life happens as you are busy making other plans”. During this time we enjoyed designing and developing many web applications, apps for startups and fortune 500 companies. We want to use everything we have to get really creative in our hive',
+        iconPosition: PrimaryIconPosition.Start,
+      );
+
+  Widget _iAmArathi() => XCard(breakpoint: 700).get(
+        primaryIconImagePath: 'images/rt.png',
+        title: 'i’m arathi',
+        details:
+            'I am a web developer with 17+ years of experience. Currently I am focused on mobile and web app development. I am passionate about creating meaningful and simple apps.',
+        iconPosition: PrimaryIconPosition.End,
+      );
+
+  Widget _vinayHere() => XCard(breakpoint: 700).get(
+        primaryIconImagePath: 'images/vin.png',
+        title: 'vinay here',
+        details:
+            'I am a chief architect working for a fortune 500 company. I have 20+ years of experience in designing and developing web applications. Always a full stack developer and an optimist to design & create simple and usable apps.',
+        iconPosition: PrimaryIconPosition.Start,
+      );
+
+  Widget footer() => Container(
+        height: 75,
+        width: double.maxFinite,
+        color: super.getColors().secondaryColor,
+        child: Center(
+          child: Text(
+            '© 2020 Hivesey. All rights reserved.',
+            textAlign: TextAlign.center,
+          ),
+        ),
+      );
 }
