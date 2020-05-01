@@ -14,10 +14,11 @@ class XCard {
     @required title,
     @required details,
     @required iconPosition,
+    @required titleColor,
   }) =>
       MediaInfo.screenWidth < this.breakpoint
-          ? XCardVert(primaryIconImagePath: primaryIconImagePath, title: title, details: details, iconPosition: iconPosition)
-          : XCardHorz(primaryIconImagePath: primaryIconImagePath, title: title, details: details, iconPosition: iconPosition);
+          ? XCardVert(primaryIconImagePath: primaryIconImagePath, title: title, details: details, iconPosition: iconPosition, titleColor: titleColor)
+          : XCardHorz(primaryIconImagePath: primaryIconImagePath, title: title, details: details, iconPosition: iconPosition, titleColor: titleColor);
 }
 
 class XCardHorz extends AbstractXCard {
@@ -26,7 +27,14 @@ class XCardHorz extends AbstractXCard {
     @required title,
     @required details,
     @required iconPosition,
-  }) : super(primaryIconImagePath: primaryIconImagePath, title: title, details: details, iconPosition: iconPosition);
+    @required titleColor,
+  }) : super(
+          primaryIconImagePath: primaryIconImagePath,
+          title: title,
+          details: details,
+          iconPosition: iconPosition,
+          titleColor: titleColor,
+        );
 
   @override
   Widget build(BuildContext context) => iconPosition == PrimaryIconPosition.Start ? _iconAtStart() : _iconAtEnd();
@@ -76,7 +84,14 @@ class XCardVert extends AbstractXCard {
     @required title,
     @required details,
     @required iconPosition,
-  }) : super(primaryIconImagePath: primaryIconImagePath, title: title, details: details, iconPosition: iconPosition);
+    @required titleColor,
+  }) : super(
+          primaryIconImagePath: primaryIconImagePath,
+          title: title,
+          details: details,
+          iconPosition: iconPosition,
+          titleColor: titleColor,
+        );
 
   @override
   Widget build(BuildContext context) => _build();
@@ -121,8 +136,15 @@ abstract class AbstractXCard extends StatelessWidget with AbstractStyle {
   final String primaryIconImagePath;
   final String title;
   final String details;
+  final Color titleColor;
 
-  const AbstractXCard({@required this.primaryIconImagePath, @required this.title, @required this.details, @required this.iconPosition});
+  const AbstractXCard({
+    @required this.primaryIconImagePath,
+    @required this.title,
+    @required this.details,
+    @required this.iconPosition,
+    @required this.titleColor,
+  });
 
   Widget _primaryAvatar() => CircleAvatar(
         radius: avatarRadius,
@@ -145,7 +167,7 @@ abstract class AbstractXCard extends StatelessWidget with AbstractStyle {
           this.title,
           style: TextStyle(
             fontSize: super.getTextTheme().headline3.fontSize,
-            color: super.getColors().primaryColorLightOrDark,
+            color: titleColor,
           ),
           textAlign: textAlign,
         ),

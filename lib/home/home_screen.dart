@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget with AbstractStyle {
             body: Scrollbar(
               child: CustomScrollView(
                 slivers: <Widget>[
-                  AppBarScreen(),
+                  AppBarScreen(currentScreen: AppMenu.Home),
                   _body(),
                 ],
               ),
@@ -106,8 +106,9 @@ class HomeScreen extends StatelessWidget with AbstractStyle {
         primaryIconImagePath: 'images/rt-vin.png',
         title: 'hi',
         details:
-            'We are web developers. Our first piece of code was  “linked list in C” about 25 years ago. As the saying goes “life happens as you are busy making other plans”. During this time we enjoyed designing and developing many web applications, apps for startups and fortune 500 companies. We want to use everything we have to get really creative in our hive',
+            'We are web developers. Our first piece of code together was  “linked list in C” about 25 years ago. As the saying goes “life happens as you are busy making other plans”. During this time we enjoyed designing and developing many web applications, apps for startups and fortune 500 companies. We want to use everything we have to get really creative in our hive',
         iconPosition: PrimaryIconPosition.Start,
+        titleColor: super.getColors().primaryColorLightOrDark,
       );
 
   Widget _iAmArathi() => XCard(breakpoint: 700).get(
@@ -116,6 +117,7 @@ class HomeScreen extends StatelessWidget with AbstractStyle {
         details:
             'I am a web developer with 17+ years of experience. Currently I am focused on mobile and web app development. I am passionate about creating meaningful and simple apps.',
         iconPosition: PrimaryIconPosition.End,
+        titleColor: super.getColors().primaryColorLightOrDark,
       );
 
   Widget _vinayHere() => XCard(breakpoint: 700).get(
@@ -124,6 +126,7 @@ class HomeScreen extends StatelessWidget with AbstractStyle {
         details:
             'I am a chief architect working for a fortune 500 company. I have 20+ years of experience in designing and developing web applications. Always a full stack developer and an optimist to design & create simple and usable apps.',
         iconPosition: PrimaryIconPosition.Start,
+        titleColor: super.getColors().primaryColorLightOrDark,
       );
 
   Widget footer() => Container(

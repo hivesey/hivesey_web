@@ -25,6 +25,7 @@ dependencies:
   provider: ^4.0.4
   universal_html: ^1.2.2
   device_simulator: ^0.9.6
+  fluro: ^1.6.3
 
   flutter:
     sdk: flutter

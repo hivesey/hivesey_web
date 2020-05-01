@@ -7,7 +7,13 @@ import 'appbar_barrel.dart';
 
 typedef OnTextMenuTapped = void Function();
 
+enum AppMenu { Home, Matchsey }
+
 class AppBarScreen extends StatelessWidget with AbstractStyle {
+  final AppMenu currentScreen;
+
+  AppBarScreen({@required this.currentScreen});
+
   @override
   Widget build(BuildContext context) => _sliverAppBar(context);
 
@@ -83,13 +89,13 @@ class AppBarScreen extends StatelessWidget with AbstractStyle {
         _textMenuOption(
           displayText: 'Home',
           tooltip: 'Home Page',
-          onTextMenuTapped: () => Navigator.of(context).pushReplacementNamed(Routes.homeRoute),
+          onTextMenuTapped: () => currentScreen != AppMenu.Home ? Navigator.of(context).pushNamed(Routes.homeRoute) : '',
         ),
         Padding(padding: EdgeInsets.fromLTRB(0, 0, 25, 0)),
         _textMenuOption(
           displayText: 'Matchsey',
           tooltip: 'Matchsey App',
-          onTextMenuTapped: () => Navigator.of(context).pushReplacementNamed(Routes.matchseyRoute),
+          onTextMenuTapped: () => currentScreen != AppMenu.Matchsey ? Navigator.of(context).pushNamed(Routes.matchseyRoute) : '',
         ),
         Padding(padding: EdgeInsets.fromLTRB(0, 0, 15, 0)),
       ];

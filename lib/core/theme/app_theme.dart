@@ -119,7 +119,7 @@ abstract class AbstractAppTheme {
       dividerColor: themeColors.lineColor,
       tooltipTheme: TooltipThemeData(
           decoration: BoxDecoration(
-              color: themeColors.primaryColor,
+              color: Colors.grey[400],
               borderRadius: BorderRadius.all(
                 Radius.circular(5),
               ))),

@@ -54,7 +54,7 @@ class MainApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               title: 'Hivesey',
               theme: ThemeModule().get<Contemporary>().getTheme(),
-              routes: Routes().routes(),
+              onGenerateRoute: Routes().generator(),
               initialRoute: Routes.initialRoute,
             ));
   }

@@ -20,7 +20,7 @@ class MatchseyScreen extends StatelessWidget with AbstractStyle {
             body: Scrollbar(
               child: CustomScrollView(
                 slivers: <Widget>[
-                  AppBarScreen(),
+                  AppBarScreen(currentScreen: AppMenu.Matchsey),
                   _body(),
                 ],
               ),
@@ -37,18 +37,9 @@ class MatchseyScreen extends StatelessWidget with AbstractStyle {
               Padding(padding: EdgeInsets.fromLTRB(0, 25, 0, 25)),
               Container(
                 constraints: BoxConstraints(maxWidth: AppConstants.maxWidth),
-                child: _hi(),
+                child: _collaboration(),
               ),
               DotsDivider(),
-              Container(
-                constraints: BoxConstraints(maxWidth: AppConstants.maxWidth),
-                child: XCursor(child: _iAmArathi()),
-              ),
-              DotsDivider(),
-              Container(
-                constraints: BoxConstraints(maxWidth: AppConstants.maxWidth),
-                child: _vinayHere(),
-              ),
               Padding(padding: EdgeInsets.fromLTRB(0, 25, 0, 25)),
               Container(
                 child: footer(),
@@ -61,8 +52,8 @@ class MatchseyScreen extends StatelessWidget with AbstractStyle {
   /// title, caption and image with mountains
   Widget _titleWithImage() => Container(
         width: double.maxFinite,
-        padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
-        color: super.getColors().primaryColor,
+        padding: EdgeInsets.fromLTRB(0, 50, 0, 50),
+        color: Color.fromRGBO(188, 97, 85, 0.9),
         alignment: Alignment.bottomCenter,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -74,7 +65,7 @@ class MatchseyScreen extends StatelessWidget with AbstractStyle {
               constraints: BoxConstraints(maxWidth: AppConstants.maxWidth - 150),
               alignment: Alignment.bottomCenter,
               child: Image.asset(
-                'images/mountains.png',
+                'images/matchsey.png',
                 fit: BoxFit.scaleDown,
               ),
             )
@@ -92,38 +83,22 @@ class MatchseyScreen extends StatelessWidget with AbstractStyle {
         ),
         Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 20)),
         Text(
-          'pronounced as hive-C is our small creative hub.',
+          'A simple creative icon matching BRAIN game. Perfect for kids 4+ and adults alike.',
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: super.getTextTheme().headline6.fontSize,
-            color: super.getColors().textColorLightOrDark,
+            color: super.getColors().primaryTextColor,
             fontWeight: FontWeight.w500,
           ),
         )
       ];
 
-  Widget _hi() => XCard(breakpoint: 700).get(
-        primaryIconImagePath: 'images/rt-vin.png',
-        title: 'hi',
-        details:
-            'We are web developers. Our first piece of code was  “linked list in C” about 25 years ago. As the saying goes “life happens as you are busy making other plans”. During this time we enjoyed designing and developing many web applications, apps for startups and fortune 500 companies. We want to use everything we have to get really creative in our hive',
+  Widget _collaboration() => XCard(breakpoint: 700).get(
+        primaryIconImagePath: 'images/family.png',
+        title: 'collaboration',
+        details: 'We really enjoyed developing this game with our kids. Lots of collaboration from ideas, design to quality checks.',
         iconPosition: PrimaryIconPosition.Start,
-      );
-
-  Widget _iAmArathi() => XCard(breakpoint: 700).get(
-        primaryIconImagePath: 'images/rt.png',
-        title: 'i’m arathi',
-        details:
-            'I am a web developer with 17+ years of experience. Currently I am focused on mobile and web app development. I am passionate about creating meaningful and simple apps.',
-        iconPosition: PrimaryIconPosition.End,
-      );
-
-  Widget _vinayHere() => XCard(breakpoint: 700).get(
-        primaryIconImagePath: 'images/vin.png',
-        title: 'vinay here',
-        details:
-            'I am a chief architect working for a fortune 500 company. I have 20+ years of experience in designing and developing web applications. Always a full stack developer and an optimist to design & create simple and usable apps.',
-        iconPosition: PrimaryIconPosition.Start,
+        titleColor: Color.fromRGBO(195, 113, 102, 1),
       );
 
   Widget footer() => Container(
