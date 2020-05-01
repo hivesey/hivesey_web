@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hiveseyweb/home/home_barrel.dart';
+import '../routes.dart';
 
 import '../core/theme/theme_barrel.dart';
 import '../core/widgets/xwidgets_barrel.dart';
+import 'appbar_barrel.dart';
 
 typedef OnTextMenuTapped = void Function();
 
@@ -31,7 +32,7 @@ class AppBarScreen extends StatelessWidget with AbstractStyle {
                 flex: 6,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: _menu(),
+                  children: _menu(context),
                 ),
               ),
               Container(width: MediaInfo.gutterScreenWidth())
@@ -67,25 +68,28 @@ class AppBarScreen extends StatelessWidget with AbstractStyle {
   Widget _flexibleSPaceBar() => FlexibleSpaceBar(
           background: Align(
         alignment: AlignmentDirectional.centerStart,
-        child: Image.asset(
-          'images/hivesey-logo-512.png',
-          fit: BoxFit.scaleDown,
+        child: Container(
+          padding: EdgeInsets.fromLTRB(35, 0, 0, 0),
+          child: Image.asset(
+            'images/hivesey-logo-512.png',
+            fit: BoxFit.scaleDown,
+          ),
         ),
       ));
 
   ///menu that both in expanded and shrink mode
-  _menu() => <Widget>[
+  _menu(context) => <Widget>[
         Padding(padding: EdgeInsets.fromLTRB(25, 0, 0, 0)),
         _textMenuOption(
           displayText: 'Home',
           tooltip: 'Home Page',
-          onTextMenuTapped: () => print('home tapped'),
+          onTextMenuTapped: () => Navigator.of(context).pushReplacementNamed(Routes.homeRoute),
         ),
         Padding(padding: EdgeInsets.fromLTRB(0, 0, 25, 0)),
         _textMenuOption(
           displayText: 'Matchsey',
           tooltip: 'Matchsey App',
-          onTextMenuTapped: () => print('matchsey tapped'),
+          onTextMenuTapped: () => Navigator.of(context).pushReplacementNamed(Routes.matchseyRoute),
         ),
         Padding(padding: EdgeInsets.fromLTRB(0, 0, 15, 0)),
       ];

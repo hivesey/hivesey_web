@@ -5,8 +5,8 @@ import '../appconstants.dart';
 import '../core/theme/theme_barrel.dart';
 import '../core/widgets/xwidgets_barrel.dart';
 
-class HomeScreen extends StatelessWidget with AbstractStyle {
-  const HomeScreen();
+class MatchseyScreen extends StatelessWidget with AbstractStyle {
+  const MatchseyScreen();
 
   @override
   Widget build(BuildContext context) => _safeArea();
@@ -84,7 +84,7 @@ class HomeScreen extends StatelessWidget with AbstractStyle {
 
   List<Widget> _titleWithDesc() => [
         Text(
-          'H i v e s e y',
+          'M a t c h s e y',
           style: TextStyle(
             fontSize: super.getTextTheme().headline3.fontSize,
             color: super.getColors().backgroundColorLightOrDark,
