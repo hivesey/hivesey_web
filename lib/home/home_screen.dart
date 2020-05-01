@@ -39,12 +39,12 @@ class HomeScreen extends StatelessWidget with AbstractStyle {
                 constraints: BoxConstraints(maxWidth: AppConstants.maxWidth),
                 child: _hi(),
               ),
-              Padding(padding: EdgeInsets.fromLTRB(0, 25, 0, 25)),
+              DotsDivider(),
               Container(
                 constraints: BoxConstraints(maxWidth: AppConstants.maxWidth),
                 child: _iAmArathi(),
               ),
-              Padding(padding: EdgeInsets.fromLTRB(0, 25, 0, 25)),
+              DotsDivider(),
               Container(
                 constraints: BoxConstraints(maxWidth: AppConstants.maxWidth),
                 child: _vinayHere(),
@@ -86,7 +86,7 @@ class HomeScreen extends StatelessWidget with AbstractStyle {
         Text(
           'H i v e s e y',
           style: TextStyle(
-            fontSize: super.getTextTheme().headline4.fontSize,
+            fontSize: super.getTextTheme().headline3.fontSize,
             color: super.getColors().backgroundColorLightOrDark,
           ),
         ),
