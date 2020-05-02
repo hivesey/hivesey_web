@@ -45,6 +45,11 @@ class MatchseyScreen extends StatelessWidget with AbstractStyle {
                 constraints: BoxConstraints(maxWidth: AppConstants.maxWidth),
                 child: _android(),
               ),
+              DotsDivider(),
+              Container(
+                constraints: BoxConstraints(maxWidth: AppConstants.maxWidth),
+                child: _ios(),
+              ),
               Padding(padding: EdgeInsets.fromLTRB(0, 25, 0, 25)),
               Container(
                 child: footer(),
@@ -114,12 +119,10 @@ class MatchseyScreen extends StatelessWidget with AbstractStyle {
         primaryIconImagePath: 'images/android.png',
         title: 'android & chrome',
         detailsWidget: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: MediaInfo.screenWidth < 700 ? CrossAxisAlignment.center : CrossAxisAlignment.end,
           children: [
             Text(
               'Supports all versions of android and chrome.',
-              textAlign: TextAlign.left,
               style: TextStyle(
                 fontSize: super.getTextTheme().subtitle1.fontSize,
                 height: AbstractXCard.detailTextLineSpacing,
@@ -131,7 +134,6 @@ class MatchseyScreen extends StatelessWidget with AbstractStyle {
                 child: Container(
                   padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
                   child: Text('Please download the app from Google Play Store',
-                      textAlign: MediaInfo.screenWidth < 700 ? TextAlign.center : TextAlign.right,
                       style: TextStyle(
                         decoration: TextDecoration.underline,
                         fontSize: super.getTextTheme().subtitle1.fontSize,
@@ -144,6 +146,40 @@ class MatchseyScreen extends StatelessWidget with AbstractStyle {
           ],
         ),
         iconPosition: PrimaryIconPosition.End,
+        titleColor: Color.fromRGBO(195, 113, 102, 1),
+      );
+
+  Widget _ios() => XCard(breakpoint: 700).get(
+        primaryIconImagePath: 'images/apple.png',
+        title: 'iOS',
+        detailsWidget: Column(
+          crossAxisAlignment: MediaInfo.screenWidth < 700 ? CrossAxisAlignment.center : CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Supports all versions of iOS.',
+              style: TextStyle(
+                fontSize: super.getTextTheme().subtitle1.fontSize,
+                height: AbstractXCard.detailTextLineSpacing,
+              ),
+            ),
+            XCursor(
+              child: GestureDetector(
+                onTap: () => UtilsModule().get<UrlLaunch>().openLink('https://apps.apple.com/us/app/matchsey/id1505309042'),
+                child: Container(
+                  padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                  child: Text('Please download the app from Apple App Store',
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        fontSize: super.getTextTheme().subtitle1.fontSize,
+                        height: AbstractXCard.detailTextLineSpacing,
+                        color: Color.fromRGBO(195, 113, 102, 1),
+                      )),
+                ),
+              ),
+            )
+          ],
+        ),
+        iconPosition: PrimaryIconPosition.Start,
         titleColor: Color.fromRGBO(195, 113, 102, 1),
       );
 
