@@ -40,6 +40,10 @@ class MatchseyScreen extends StatelessWidget with AbstractStyle {
                 child: _collaboration(),
               ),
               DotsDivider(),
+              Container(
+                constraints: BoxConstraints(maxWidth: AppConstants.maxWidth),
+                child: _android(),
+              ),
               Padding(padding: EdgeInsets.fromLTRB(0, 25, 0, 25)),
               Container(
                 child: footer(),
@@ -97,8 +101,17 @@ class MatchseyScreen extends StatelessWidget with AbstractStyle {
         primaryIconImagePath: 'images/family.png',
         title: 'collaboration',
         details:
-            'We really enjoyed developing this game with our kids. Lots of collaboration from ideas, designs and lots of quality checks. They loved looking at number of downloads and user comments. Truly amazing :-)',
+            'We really enjoyed developing this game with our kids. Lots of collaboration from ideas, designs and quality checks. They loved following user feedback. Truly amazing :-)',
         iconPosition: PrimaryIconPosition.Start,
+        titleColor: Color.fromRGBO(195, 113, 102, 1),
+      );
+
+  Widget _android() => XCard(breakpoint: 700).get(
+        primaryIconImagePath: 'images/android.png',
+        title: 'android & chrome',
+        details:
+            'Supports all versions of android and chrome. Please download the app from Google Play Store \n https://play.google.com/store/apps/details?id=hivesey.matchsey',
+        iconPosition: PrimaryIconPosition.End,
         titleColor: Color.fromRGBO(195, 113, 102, 1),
       );
 
