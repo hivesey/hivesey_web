@@ -109,7 +109,7 @@ class AppBarScreen extends StatelessWidget with AbstractStyle {
                 displayText,
                 style: TextStyle(
                   color: super.getColors().textColorLightOrDark,
-                  fontSize: super.getTextTheme().subtitle2.fontSize,
+                  fontSize: super.getTextTheme().subtitle1.fontSize,
                 ),
               ))));
 }

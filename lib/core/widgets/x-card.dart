@@ -12,28 +12,46 @@ class XCard {
   AbstractXCard get({
     @required primaryIconImagePath,
     @required title,
-    @required details,
+    details,
+    detailsWidget,
     @required iconPosition,
     @required titleColor,
   }) =>
       MediaInfo.screenWidth < this.breakpoint
-          ? XCardVert(primaryIconImagePath: primaryIconImagePath, title: title, details: details, iconPosition: iconPosition, titleColor: titleColor)
-          : XCardHorz(primaryIconImagePath: primaryIconImagePath, title: title, details: details, iconPosition: iconPosition, titleColor: titleColor);
+          ? XCardVert(
+              primaryIconImagePath: primaryIconImagePath,
+              title: title,
+              details: details,
+              detailsWidget: detailsWidget,
+              iconPosition: iconPosition,
+              titleColor: titleColor,
+            )
+          : XCardHorz(
+              primaryIconImagePath: primaryIconImagePath,
+              title: title,
+              details: details,
+              detailsWidget: detailsWidget,
+              iconPosition: iconPosition,
+              titleColor: titleColor,
+            );
 }
 
 class XCardHorz extends AbstractXCard {
   const XCardHorz({
     @required primaryIconImagePath,
     @required title,
-    @required details,
+    details,
+    detailsWidget,
     @required iconPosition,
     @required titleColor,
   }) : super(
           primaryIconImagePath: primaryIconImagePath,
           title: title,
           details: details,
+          detailsWidget: detailsWidget,
           iconPosition: iconPosition,
           titleColor: titleColor,
+          isHorz: true,
         );
 
   @override
@@ -68,6 +86,7 @@ class XCardHorz extends AbstractXCard {
         child: Container(
           padding: EdgeInsets.fromLTRB(30, 30, 30, 30),
           child: Column(
+            crossAxisAlignment: iconPosition == PrimaryIconPosition.Start ? CrossAxisAlignment.start : CrossAxisAlignment.end,
             children: [
               _title(iconPosition == PrimaryIconPosition.Start ? TextAlign.left : TextAlign.right),
               Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 20)),
@@ -82,15 +101,18 @@ class XCardVert extends AbstractXCard {
   const XCardVert({
     @required primaryIconImagePath,
     @required title,
-    @required details,
+    details,
+    detailsWidget,
     @required iconPosition,
     @required titleColor,
   }) : super(
           primaryIconImagePath: primaryIconImagePath,
           title: title,
           details: details,
+          detailsWidget: detailsWidget,
           iconPosition: iconPosition,
           titleColor: titleColor,
+          isHorz: false,
         );
 
   @override
@@ -127,23 +149,27 @@ class XCardVert extends AbstractXCard {
 }
 
 abstract class AbstractXCard extends StatelessWidget with AbstractStyle {
-  final double avatarRadius = 65;
-  final double detailTextLineSpacing = 1.8;
-  final double imageToTextSeperatorHeight = 150;
-  final double imageToTextSeperatorWidth = 225;
+  static final double avatarRadius = 65;
+  static final double detailTextLineSpacing = 1.8;
+  static final double imageToTextSeperatorHeight = 150;
+  static final double imageToTextSeperatorWidth = 225;
   final PrimaryIconPosition iconPosition;
 
   final String primaryIconImagePath;
   final String title;
   final String details;
+  final Widget detailsWidget; //it is either details string or widget
   final Color titleColor;
+  final bool isHorz;
 
   const AbstractXCard({
     @required this.primaryIconImagePath,
     @required this.title,
-    @required this.details,
+    this.details: '',
+    this.detailsWidget,
     @required this.iconPosition,
     @required this.titleColor,
+    @required this.isHorz,
   });
 
   Widget _primaryAvatar() => CircleAvatar(
@@ -166,19 +192,29 @@ abstract class AbstractXCard extends StatelessWidget with AbstractStyle {
         child: Text(
           this.title,
           style: TextStyle(
-            fontSize: super.getTextTheme().headline3.fontSize,
+            fontSize: MediaInfo.isPhone() ? super.getTextTheme().headline4.fontSize : super.getTextTheme().headline3.fontSize,
             color: titleColor,
           ),
           textAlign: textAlign,
         ),
       );
 
-  Widget _details() => Text(
+  Widget _details() =>
+      this.detailsWidget ??
+      Text(
         this.details,
-        textAlign: TextAlign.justify,
+        textAlign: _getTextAlign(),
         style: TextStyle(
           fontSize: super.getTextTheme().subtitle1.fontSize,
           height: detailTextLineSpacing,
         ),
       );
+
+  TextAlign _getTextAlign() {
+    if (this.isHorz) {
+      return iconPosition == PrimaryIconPosition.Start ? TextAlign.left : TextAlign.right;
+    } else {
+      return TextAlign.center;
+    }
+  }
 }

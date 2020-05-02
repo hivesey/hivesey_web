@@ -129,8 +129,9 @@ class MediaInfo {
     return displayType;
   }
 
-  //static DisplayType displayTypeHorz() => displayType(DisplayAxis.Horz);
-  //static DisplayType displayTypeVert() => displayType(DisplayAxis.Vert);
+  static DisplayType displayTypeHorz() => displayType(DisplayAxis.Horz);
+  static DisplayType displayTypeVert() => displayType(DisplayAxis.Vert);
+
   static DisplayType minDisplayType() => displayType(screenWidth > screenHeight ? DisplayAxis.Vert : DisplayAxis.Horz);
   static DisplayType maxDisplayType() => displayType(screenWidth > screenHeight ? DisplayAxis.Horz : DisplayAxis.Vert);
 }

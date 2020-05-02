@@ -14,6 +14,6 @@ class ThemeModule extends AbstractModule {
 
   @override
   void configure(Injector injector) {
-    injector.map<Contemporary>((i) => Contemporary(), isSingleton: false);
+    injector.map<Contemporary>((i) => Contemporary(), isSingleton: true);
   }
 }

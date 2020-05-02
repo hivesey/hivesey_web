@@ -175,8 +175,8 @@ abstract class AbstractAppTheme {
       );
 
   Map<DisplayType, double> _textScaleFactorMap = const {
-    DisplayType.Size0: 1.1,
-    DisplayType.Petite: 1,
+    DisplayType.Size0: 1.2,
+    DisplayType.Petite: 1.2,
     DisplayType.XXSmall: 1.10,
     DisplayType.XSmall: 1.10,
     DisplayType.Small: 1.15,

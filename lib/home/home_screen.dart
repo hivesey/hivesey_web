@@ -91,13 +91,16 @@ class HomeScreen extends StatelessWidget with AbstractStyle {
           ),
         ),
         Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 20)),
-        Text(
-          'pronounced as hive-C is our small creative hub.',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: super.getTextTheme().headline6.fontSize,
-            color: super.getColors().textColorLightOrDark,
-            fontWeight: FontWeight.w500,
+        Container(
+          padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+          child: Text(
+            'pronounced as hive-C is our small creative hub.',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: super.getTextTheme().headline6.fontSize,
+              color: super.getColors().textColorLightOrDark,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         )
       ];

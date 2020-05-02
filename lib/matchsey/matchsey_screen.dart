@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../appbar/appbar_barrel.dart';
 import '../appconstants.dart';
 import '../core/theme/theme_barrel.dart';
+import '../core/utils/utils_barrel.dart';
 import '../core/widgets/xwidgets_barrel.dart';
 
 class MatchseyScreen extends StatelessWidget with AbstractStyle {
@@ -86,13 +87,16 @@ class MatchseyScreen extends StatelessWidget with AbstractStyle {
           ),
         ),
         Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 20)),
-        Text(
-          'A simple creative icon matching BRAIN game. Perfect for kids 4+ and adults alike.',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: super.getTextTheme().headline6.fontSize,
-            color: super.getColors().primaryTextColor,
-            fontWeight: FontWeight.w500,
+        Container(
+          padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+          child: Text(
+            'A simple creative icon matching BRAIN game. Perfect for kids 4+ and adults alike.',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: super.getTextTheme().headline6.fontSize,
+              color: super.getColors().primaryTextColor,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         )
       ];
@@ -109,8 +113,36 @@ class MatchseyScreen extends StatelessWidget with AbstractStyle {
   Widget _android() => XCard(breakpoint: 700).get(
         primaryIconImagePath: 'images/android.png',
         title: 'android & chrome',
-        details:
-            'Supports all versions of android and chrome. Please download the app from Google Play Store \n https://play.google.com/store/apps/details?id=hivesey.matchsey',
+        detailsWidget: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Text(
+              'Supports all versions of android and chrome.',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontSize: super.getTextTheme().subtitle1.fontSize,
+                height: AbstractXCard.detailTextLineSpacing,
+              ),
+            ),
+            XCursor(
+              child: GestureDetector(
+                onTap: () => UtilsModule().get<UrlLaunch>().openLink('https://play.google.com/store/apps/details?id=hivesey.matchsey'),
+                child: Container(
+                  padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                  child: Text('Please download the app from Google Play Store',
+                      textAlign: MediaInfo.screenWidth < 700 ? TextAlign.center : TextAlign.right,
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        fontSize: super.getTextTheme().subtitle1.fontSize,
+                        height: AbstractXCard.detailTextLineSpacing,
+                        color: Color.fromRGBO(195, 113, 102, 1),
+                      )),
+                ),
+              ),
+            )
+          ],
+        ),
         iconPosition: PrimaryIconPosition.End,
         titleColor: Color.fromRGBO(195, 113, 102, 1),
       );
