@@ -112,7 +112,8 @@ class MatchseyScreen extends StatelessWidget with AbstractStyle {
         details:
             'We really enjoyed developing this game with our kids. Lots of collaboration from ideas, designs and quality checks. They loved following user feedback. Truly amazing :-)',
         iconPosition: PrimaryIconPosition.Start,
-        titleColor: Color.fromRGBO(195, 113, 102, 1),
+        titleColor: super.getColors().primaryColor,
+        dashLineColor: Color.fromRGBO(195, 113, 102, 1),
       );
 
   Widget _android() => XCard(breakpoint: 700).get(
@@ -146,7 +147,8 @@ class MatchseyScreen extends StatelessWidget with AbstractStyle {
           ],
         ),
         iconPosition: PrimaryIconPosition.End,
-        titleColor: Color.fromRGBO(195, 113, 102, 1),
+        titleColor: super.getColors().primaryColor,
+        dashLineColor: Color.fromRGBO(195, 113, 102, 1),
       );
 
   Widget _ios() => XCard(breakpoint: 700).get(
@@ -180,7 +182,8 @@ class MatchseyScreen extends StatelessWidget with AbstractStyle {
           ],
         ),
         iconPosition: PrimaryIconPosition.Start,
-        titleColor: Color.fromRGBO(195, 113, 102, 1),
+        titleColor: super.getColors().primaryColor,
+        dashLineColor: Color.fromRGBO(195, 113, 102, 1),
       );
 
   Widget footer() => Container(

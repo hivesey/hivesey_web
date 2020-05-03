@@ -16,6 +16,7 @@ class XCard {
     detailsWidget,
     @required iconPosition,
     @required titleColor,
+    Color dashLineColor,
   }) =>
       MediaInfo.screenWidth < this.breakpoint
           ? XCardVert(
@@ -25,6 +26,7 @@ class XCard {
               detailsWidget: detailsWidget,
               iconPosition: iconPosition,
               titleColor: titleColor,
+              dashLineColor: dashLineColor,
             )
           : XCardHorz(
               primaryIconImagePath: primaryIconImagePath,
@@ -33,6 +35,7 @@ class XCard {
               detailsWidget: detailsWidget,
               iconPosition: iconPosition,
               titleColor: titleColor,
+              dashLineColor: dashLineColor,
             );
 }
 
@@ -44,6 +47,7 @@ class XCardHorz extends AbstractXCard {
     detailsWidget,
     @required iconPosition,
     @required titleColor,
+    Color dashLineColor,
   }) : super(
           primaryIconImagePath: primaryIconImagePath,
           title: title,
@@ -52,6 +56,7 @@ class XCardHorz extends AbstractXCard {
           iconPosition: iconPosition,
           titleColor: titleColor,
           isHorz: true,
+          dashLineColor: dashLineColor,
         );
 
   @override
@@ -62,7 +67,7 @@ class XCardHorz extends AbstractXCard {
         child: Row(
           children: <Widget>[
             _primaryAvatar(),
-            Expanded(flex: 1, child: DashLine(color: super.getColors().primaryColor)),
+            Expanded(flex: 1, child: _dashLine()),
             _imageToTextSeperator(isToLeft: true),
             _titleAndDetails(),
           ],
@@ -75,7 +80,7 @@ class XCardHorz extends AbstractXCard {
           children: <Widget>[
             _titleAndDetails(),
             _imageToTextSeperator(isToLeft: true),
-            Expanded(flex: 1, child: DashLine(color: super.getColors().primaryColor)),
+            Expanded(flex: 1, child: _dashLine()),
             _primaryAvatar(),
           ],
         ),
@@ -105,6 +110,7 @@ class XCardVert extends AbstractXCard {
     detailsWidget,
     @required iconPosition,
     @required titleColor,
+    Color dashLineColor,
   }) : super(
           primaryIconImagePath: primaryIconImagePath,
           title: title,
@@ -113,6 +119,7 @@ class XCardVert extends AbstractXCard {
           iconPosition: iconPosition,
           titleColor: titleColor,
           isHorz: false,
+          dashLineColor: dashLineColor,
         );
 
   @override
@@ -125,10 +132,7 @@ class XCardVert extends AbstractXCard {
             _primaryAvatar(),
             Container(
               width: 80,
-              child: DashLine(
-                color: super.getColors().primaryColor,
-                orientation: DashLineOrientation.DashVert,
-              ),
+              child: _dashLine(orientation: DashLineOrientation.DashVert),
             ),
             _imageToTextSeperator(isToLeft: false),
             _titleAndDetails(),
@@ -161,6 +165,7 @@ abstract class AbstractXCard extends StatelessWidget with AbstractStyle {
   final Widget detailsWidget; //it is either details string or widget
   final Color titleColor;
   final bool isHorz;
+  final Color dashLineColor;
 
   const AbstractXCard({
     @required this.primaryIconImagePath,
@@ -170,6 +175,7 @@ abstract class AbstractXCard extends StatelessWidget with AbstractStyle {
     @required this.iconPosition,
     @required this.titleColor,
     @required this.isHorz,
+    this.dashLineColor,
   });
 
   Widget _primaryAvatar() => CircleAvatar(
@@ -217,4 +223,9 @@ abstract class AbstractXCard extends StatelessWidget with AbstractStyle {
       return TextAlign.center;
     }
   }
+
+  Widget _dashLine({DashLineOrientation orientation}) => DashLine(
+        color: this.dashLineColor ?? super.getColors().primaryColor,
+        orientation: orientation ?? DashLineOrientation.DashHorz,
+      );
 }
