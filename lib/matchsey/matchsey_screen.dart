@@ -5,6 +5,7 @@ import '../appconstants.dart';
 import '../core/theme/theme_barrel.dart';
 import '../core/utils/utils_barrel.dart';
 import '../core/widgets/xwidgets_barrel.dart';
+import 'matchsey_barrel.dart';
 
 class MatchseyScreen extends StatelessWidget with AbstractStyle {
   const MatchseyScreen();
@@ -50,6 +51,11 @@ class MatchseyScreen extends StatelessWidget with AbstractStyle {
                 constraints: BoxConstraints(maxWidth: AppConstants.maxWidth),
                 child: _ios(),
               ),
+              DotsDivider(),
+              Container(
+                constraints: BoxConstraints(maxWidth: AppConstants.maxWidth),
+                child: _imageCarousel(),
+              ),
               Padding(padding: EdgeInsets.fromLTRB(0, 25, 0, 25)),
               Container(
                 child: footer(),
@@ -58,6 +64,8 @@ class MatchseyScreen extends StatelessWidget with AbstractStyle {
           ],
         ),
       );
+
+  Widget _imageCarousel() => MatchseyCarousel();
 
   /// title, caption and image with mountains
   Widget _titleWithImage() => Container(
@@ -124,6 +132,7 @@ class MatchseyScreen extends StatelessWidget with AbstractStyle {
           children: [
             Text(
               'Supports all versions of android and chrome.',
+              textAlign: MediaInfo.screenWidth < 700 ? TextAlign.center : TextAlign.right,
               style: TextStyle(
                 fontSize: super.getTextTheme().subtitle1.fontSize,
                 height: AbstractXCard.detailTextLineSpacing,
@@ -135,6 +144,7 @@ class MatchseyScreen extends StatelessWidget with AbstractStyle {
                 child: Container(
                   padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
                   child: Text('Please download the app from Google Play Store',
+                      textAlign: MediaInfo.screenWidth < 700 ? TextAlign.center : TextAlign.right,
                       style: TextStyle(
                         decoration: TextDecoration.underline,
                         fontSize: super.getTextTheme().subtitle1.fontSize,
@@ -159,6 +169,7 @@ class MatchseyScreen extends StatelessWidget with AbstractStyle {
           children: [
             Text(
               'Supports all versions of iOS.',
+              textAlign: MediaInfo.screenWidth < 700 ? TextAlign.center : TextAlign.left,
               style: TextStyle(
                 fontSize: super.getTextTheme().subtitle1.fontSize,
                 height: AbstractXCard.detailTextLineSpacing,
@@ -170,6 +181,7 @@ class MatchseyScreen extends StatelessWidget with AbstractStyle {
                 child: Container(
                   padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
                   child: Text('Please download the app from Apple App Store',
+                      textAlign: MediaInfo.screenWidth < 700 ? TextAlign.center : TextAlign.left,
                       style: TextStyle(
                         decoration: TextDecoration.underline,
                         fontSize: super.getTextTheme().subtitle1.fontSize,
