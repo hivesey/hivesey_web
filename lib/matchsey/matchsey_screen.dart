@@ -88,7 +88,7 @@ class MatchseyScreen extends StatelessWidget with AbstractStyle {
               textAlign: TextAlign.center,
             ),
           ),
-          Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 80)),
+          Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 40)),
           MatchseyCarousel(),
         ],
       );

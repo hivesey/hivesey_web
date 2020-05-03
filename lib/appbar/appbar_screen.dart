@@ -60,13 +60,13 @@ class AppBarScreen extends StatelessWidget with AbstractStyle {
               fit: BoxFit.scaleDown,
             ),
           ),
-          Text(
+          /*Text(
             'Hivesey',
             style: TextStyle(
               color: super.getColors().textColorLightOrDark,
               fontSize: super.getTextTheme().headline6.fontSize,
             ),
-          ),
+          ),*/
         ],
       );
 
