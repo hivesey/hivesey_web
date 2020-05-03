@@ -3,29 +3,79 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import '../core/theme/theme_barrel.dart';
+import '../core/widgets/xwidgets_barrel.dart';
 
 class MatchseyCarousel extends StatelessWidget with AbstractStyle {
-  const MatchseyCarousel();
+  final double _screenWidthBreakpoint = 700;
+  final double _maxWidthCarouselContainer = 500;
+  final double _carouselHeight = 700.0;
+  final double _imageWidth = 350;
+
+  final CarouselController _carouselController = CarouselController();
+  MatchseyCarousel();
 
   @override
-  Widget build(BuildContext context) => Container(
-        constraints: BoxConstraints(maxWidth: 500),
-        child: _build(),
+  Widget build(BuildContext context) => MediaInfo.screenWidth > _screenWidthBreakpoint
+      ? _forBigger()
+      : Container(
+          child: _build(),
+        );
+
+  Widget _forBigger() => Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          _navigateButton(isLeft: true),
+          Padding(padding: EdgeInsets.fromLTRB(5, 0, 45, 0)),
+          Container(
+            constraints: BoxConstraints(maxWidth: _maxWidthCarouselContainer),
+            child: _build(),
+          ),
+          Padding(padding: EdgeInsets.fromLTRB(45, 0, 5, 0)),
+          _navigateButton(isLeft: false),
+        ],
+      );
+
+  Widget _navigateButton({bool isLeft}) => Center(
+        child: XCursor(
+          child: GestureDetector(
+            onTap: () => isLeft
+                ? this._carouselController.previousPage(
+                      duration: Duration(milliseconds: 100),
+                      curve: Curves.bounceInOut,
+                    )
+                : this._carouselController.nextPage(
+                      duration: Duration(milliseconds: 100),
+                      curve: Curves.bounceInOut,
+                    ),
+            child: Container(
+              alignment: AlignmentDirectional.center,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: super.getColors().backgroundColor,
+              ),
+              child: Icon(
+                isLeft ? Icons.keyboard_arrow_left : Icons.keyboard_arrow_right,
+                color: Color.fromRGBO(195, 113, 102, 1),
+                size: 35,
+              ),
+            ),
+          ),
+        ),
       );
 
   Widget _build() => CarouselSlider.builder(
         itemCount: 32,
+        carouselController: _carouselController,
         options: CarouselOptions(
-          height: 800.0,
+          height: _carouselHeight,
           enlargeCenterPage: true,
+          carouselController: _carouselController,
+          autoPlay: MediaInfo.screenWidth > _screenWidthBreakpoint ? false : true,
         ),
-        itemBuilder: (BuildContext context, int itemIndex) => _imageSliders(
-          '$itemIndex.png',
-          _images['{$itemIndex}.png'],
-        ),
+        itemBuilder: (BuildContext context, int itemIndex) => _imageSliders('$itemIndex.png'),
       );
 
-  Widget _imageSliders(String imgNm, String desc) => Container(
+  Widget _imageSliders(String imgNm) => Container(
         child: Container(
           margin: EdgeInsets.all(5.0),
           child: ClipRRect(
@@ -36,53 +86,10 @@ class MatchseyCarousel extends StatelessWidget with AbstractStyle {
                   Image.asset(
                     'images_matchsey/$imgNm',
                     fit: BoxFit.cover,
-                    width: 350,
-                  ),
-                  Text(
-                    '$imgNm - $desc',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: super.getColors().primaryTextColor,
-                    ),
+                    width: _imageWidth,
                   ),
                 ],
               )),
         ),
       );
-
-  final Map<String, String> _images = const {
-    '1.png': 'Desc here...',
-    '2.png': 'Desc here...',
-    '3.png': 'Desc here...',
-    '4.png': 'Desc here...',
-    '5.png': 'Desc here...',
-    '6.png': 'Desc here...',
-    '7.png': 'Desc here...',
-    '8.png': 'Desc here...',
-    '9.png': 'Desc here...',
-    '10.png': 'Desc here...',
-    '11.png': 'Desc here...',
-    '12.png': 'Desc here...',
-    '13.png': 'Desc here...',
-    '14.png': 'Desc here...',
-    '15.png': 'Desc here...',
-    '16.png': 'Desc here...',
-    '17.png': 'Desc here...',
-    '18.png': 'Desc here...',
-    '19.png': 'Desc here...',
-    '20.png': 'Desc here...',
-    '21.png': 'Desc here...',
-    '22.png': 'Desc here...',
-    '23.png': 'Desc here...',
-    '24.png': 'Desc here...',
-    '25.png': 'Desc here...',
-    '26.png': 'Desc here...',
-    '27.png': 'Desc here...',
-    '28.png': 'Desc here...',
-    '29.png': 'Desc here...',
-    '30.png': 'Desc here...',
-    '31.png': 'Desc here...',
-    '32.png': 'Desc here...',
-    '33.png': 'Desc here...',
-  };
 }

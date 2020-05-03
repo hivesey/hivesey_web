@@ -42,7 +42,7 @@ class HomeScreen extends StatelessWidget with AbstractStyle {
               DotsDivider(),
               Container(
                 constraints: BoxConstraints(maxWidth: AppConstants.maxWidth),
-                child: XCursor(child: _iAmArathi()),
+                child: _iAmArathi(),
               ),
               DotsDivider(),
               Container(
@@ -98,7 +98,7 @@ class HomeScreen extends StatelessWidget with AbstractStyle {
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: super.getTextTheme().headline6.fontSize,
-              color: super.getColors().textColorLightOrDark,
+              color: super.getColors().primaryTextColor,
               fontWeight: FontWeight.w500,
             ),
           ),

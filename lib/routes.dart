@@ -12,7 +12,7 @@ class Routes {
 
   factory Routes() => _instance;
 
-  static final String initialRoute = matchseyRoute; //homeRoute;
+  static final String initialRoute = homeRoute;
 
   static final String homeRoute = '/';
   final Handler _home = Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) => HomeScreen());

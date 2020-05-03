@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../../core/theme/abstract_style.dart';
 
 class DotsDivider extends StatelessWidget with AbstractStyle {
-  const DotsDivider();
+  final Color color;
+  final count;
+  const DotsDivider({this.color, this.count});
 
   @override
   Widget build(BuildContext context) => _build();
@@ -12,28 +14,22 @@ class DotsDivider extends StatelessWidget with AbstractStyle {
         height: 100,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              child: _dot(),
-              padding: EdgeInsets.fromLTRB(0, 0, 15, 0),
-            ),
-            Container(
-              child: _dot(),
-              padding: EdgeInsets.fromLTRB(0, 0, 15, 0),
-            ),
-            Container(
-              child: _dot(),
-              padding: EdgeInsets.fromLTRB(0, 0, 15, 0),
-            )
-          ],
+          children: _dots(),
         ),
       );
+
+  List<Widget> _dots() => List.generate(
+      this.count ?? 5,
+      (index) => Container(
+            child: _dot(),
+            padding: EdgeInsets.fromLTRB(0, 0, 15, 0),
+          ));
 
   Widget _dot() => Container(
       height: 10,
       width: 10,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: super.getColors().lineColorLightOrDark,
+        color: this.color ?? super.getColors().lineColorLightOrDark,
       ));
 }

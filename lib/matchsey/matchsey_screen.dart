@@ -41,19 +41,21 @@ class MatchseyScreen extends StatelessWidget with AbstractStyle {
                 constraints: BoxConstraints(maxWidth: AppConstants.maxWidth),
                 child: _collaboration(),
               ),
-              DotsDivider(),
+              DotsDivider(color: Color.fromRGBO(138, 151, 137, 1)),
               Container(
                 constraints: BoxConstraints(maxWidth: AppConstants.maxWidth),
                 child: _android(),
               ),
-              DotsDivider(),
+              DotsDivider(color: Color.fromRGBO(138, 151, 137, 1)),
               Container(
                 constraints: BoxConstraints(maxWidth: AppConstants.maxWidth),
                 child: _ios(),
               ),
-              DotsDivider(),
+              DotsDivider(color: Color.fromRGBO(138, 151, 137, 1)),
               Container(
-                constraints: BoxConstraints(maxWidth: AppConstants.maxWidth),
+                //constraints: BoxConstraints(maxWidth: AppConstants.maxWidth),
+                width: double.maxFinite,
+                color: Color.fromRGBO(195, 113, 102, 1),
                 child: _imageCarousel(),
               ),
               Padding(padding: EdgeInsets.fromLTRB(0, 25, 0, 25)),
@@ -65,7 +67,31 @@ class MatchseyScreen extends StatelessWidget with AbstractStyle {
         ),
       );
 
-  Widget _imageCarousel() => MatchseyCarousel();
+  Widget _imageCarousel() => Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 20)),
+          CircleAvatar(
+            radius: 65,
+            backgroundColor: super.getColors().lineColor,
+            backgroundImage: AssetImage('images/screenshots.png'),
+          ),
+          Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 20)),
+          Container(
+            width: double.maxFinite,
+            child: Text(
+              'Glimpse',
+              style: TextStyle(
+                fontSize: MediaInfo.isPhone() ? super.getTextTheme().headline4.fontSize : super.getTextTheme().headline3.fontSize,
+                color: super.getColors().primaryTextColor,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 80)),
+          MatchseyCarousel(),
+        ],
+      );
 
   /// title, caption and image with mountains
   Widget _titleWithImage() => Container(
