@@ -69,7 +69,6 @@ class MatchseyCarousel extends StatelessWidget with AbstractStyle {
         options: CarouselOptions(
           height: _carouselHeight,
           enlargeCenterPage: true,
-          carouselController: _carouselController,
           autoPlay: MediaInfo.screenWidth > _screenWidthBreakpoint ? false : true,
         ),
         itemBuilder: (BuildContext context, int itemIndex) => _imageSliders('$itemIndex.png'),

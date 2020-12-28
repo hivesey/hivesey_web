@@ -82,10 +82,13 @@ abstract class AbstractAppTheme {
 
       //FORM FIELD : START
       //textformfield and related widgets
-      cursorColor: themeColors.textColorLightOrDark,
+
       //ios specific
       cupertinoOverrideTheme: CupertinoThemeData(
         primaryColor: themeColors.textColorLightOrDark,
+      ),
+      textSelectionTheme: TextSelectionThemeData(
+        cursorColor: themeColors.textColorLightOrDark,
       ),
       inputDecorationTheme: InputDecorationTheme(
         enabledBorder: UnderlineInputBorder(

@@ -6,7 +6,7 @@ import 'home/home_barrel.dart';
 import 'matchsey/matchsey_barrel.dart';
 
 class Routes {
-  static final Router _fluroRouter = Router();
+  static final FluroRouter _fluroRouter = FluroRouter();
 
   static Routes _instance = Routes._init();
 

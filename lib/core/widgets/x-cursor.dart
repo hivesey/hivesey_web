@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:universal_html/html.dart' as html;
 
 class XCursor extends MouseRegion {
-  static final appContainer = html.window.document.getElementById('app-container');
+  static final appContainer = kIsWeb ? html.window.document.querySelectorAll('flt-glass-pane')[0] : null;
 
   XCursor({Widget child, String style: XCursor.pointer})
       : super(

@@ -1,7 +1,7 @@
 import 'package:flutter_simple_dependency_injection/injector.dart';
 
 abstract class AbstractModule {
-  final Injector _injector = Injector.getInjector();
+  final Injector _injector = Injector();
   void configure(Injector injector);
 
   AbstractModule() {
